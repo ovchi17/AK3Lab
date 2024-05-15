@@ -302,9 +302,8 @@ options:
 ## Модель процессора
 Интерфейс командной строки:
 ```text
-usage: start.py [-h] [--stack_size STACK_SIZE] [--debug_limit DEBUG_LIMIT] [--limit LIMIT] [--cache_size CACHE_SIZE] [--bus_size BUS_SIZE] [--delay_ticks DELAY_TICKS]
-                     [--stack_log] [--cache_log] [--inst_fetch_log]
-                     code_file [input_file]
+usage: start.py [-h] [--stack_size STACK_SIZE] [--debug_limit DEBUG_LIMIT] [--limit LIMIT] 
+code_file [input_file]
 
 Симуляция процессора
 
