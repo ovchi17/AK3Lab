@@ -1,0 +1,198 @@
+in_source: |-
+  section .data:
+      num first 1
+      num second 2
+      num third 0
+      num total_sum 0
+
+  section .code:
+
+  sum:
+      psh third
+      psh first
+      get
+      psh second
+      get
+      add
+      pop
+
+  continue:
+      psh third
+      get
+      psh 4000000
+      div
+      jmz add
+      jmp stop
+
+  add:
+      drp
+      psh third
+      get
+      psh 2
+      mod
+      jmz true
+
+  update:
+      drp
+      psh first
+      psh second
+      get
+      pop
+      psh second
+      psh third
+      get
+      pop
+      jmp sum
+
+  true:
+      psh total_sum
+      dup
+      get
+      psh third
+      get
+      add
+      pop
+      jmp update
+
+  stop:
+      psh total_sum
+      get
+      out
+      hlt
+
+in_stdin: |
+out_log: |
+  INFO     root:start.py:66 Start simulation
+  DEBUG    root:start.py:26 TICK:    3 PUSH       PC:   1 DA:   0 SP:  0 TOS:   4 Stack: [4, -1, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:    6 PUSH       PC:   2 DA:   0 SP:  1 TOS:   2 Stack: [4, 2, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:    9 LOAD       PC:   3 DA:   2 SP:  1 TOS:   1 Stack: [4, 1, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   12 PUSH       PC:   4 DA:   2 SP:  2 TOS:   3 Stack: [4, 1, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:   15 LOAD       PC:   5 DA:   3 SP:  2 TOS:   2 Stack: [4, 1, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   17 ADD        PC:   6 DA:   3 SP:  1 TOS:   3 Stack: [4, 3, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   20 POP        PC:   7 DA:   4 SP: -1 TOS:  -1 Stack: [4, 3, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   23 PUSH       PC:   8 DA:   4 SP:  0 TOS:   4 Stack: [4, 3, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   26 LOAD       PC:   9 DA:   4 SP:  0 TOS:   3 Stack: [3, 3, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   29 PUSH       PC:  10 DA:   4 SP:  1 TOS:  4000000 Stack: [3, 4000000, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   31 DIV        PC:  11 DA:   4 SP:  0 TOS:   0 Stack: [0, 4000000, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   33 JZ         PC:  13 DA:   4 SP:  0 TOS:   0 Stack: [0, 4000000, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   35 DROP       PC:  14 DA:   4 SP: -1 TOS:  -1 Stack: [0, 4000000, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   38 PUSH       PC:  15 DA:   4 SP:  0 TOS:   4 Stack: [4, 4000000, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   41 LOAD       PC:  16 DA:   4 SP:  0 TOS:   3 Stack: [3, 4000000, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   44 PUSH       PC:  17 DA:   4 SP:  1 TOS:   2 Stack: [3, 2, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   46 MOD        PC:  18 DA:   4 SP:  0 TOS:   1 Stack: [1, 2, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   48 JZ         PC:  19 DA:   4 SP:  0 TOS:   1 Stack: [1, 2, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   50 DROP       PC:  20 DA:   4 SP: -1 TOS:  -1 Stack: [1, 2, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   53 PUSH       PC:  21 DA:   4 SP:  0 TOS:   2 Stack: [2, 2, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   56 PUSH       PC:  22 DA:   4 SP:  1 TOS:   3 Stack: [2, 3, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   59 LOAD       PC:  23 DA:   3 SP:  1 TOS:   2 Stack: [2, 2, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   62 POP        PC:  24 DA:   2 SP: -1 TOS:  -1 Stack: [2, 2, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   65 PUSH       PC:  25 DA:   2 SP:  0 TOS:   3 Stack: [3, 2, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   68 PUSH       PC:  26 DA:   2 SP:  1 TOS:   4 Stack: [3, 4, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   71 LOAD       PC:  27 DA:   4 SP:  1 TOS:   3 Stack: [3, 3, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   74 POP        PC:  28 DA:   3 SP: -1 TOS:  -1 Stack: [3, 3, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   76 JUMP       PC:   0 DA:   3 SP: -1 TOS:  -1 Stack: [3, 3, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   79 PUSH       PC:   1 DA:   3 SP:  0 TOS:   4 Stack: [4, 3, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   82 PUSH       PC:   2 DA:   3 SP:  1 TOS:   2 Stack: [4, 2, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   85 LOAD       PC:   3 DA:   2 SP:  1 TOS:   2 Stack: [4, 2, 2, -1, -1]
+  DEBUG    root:start.py:26 TICK:   88 PUSH       PC:   4 DA:   2 SP:  2 TOS:   3 Stack: [4, 2, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:   91 LOAD       PC:   5 DA:   3 SP:  2 TOS:   3 Stack: [4, 2, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:   93 ADD        PC:   6 DA:   3 SP:  1 TOS:   5 Stack: [4, 5, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:   96 POP        PC:   7 DA:   4 SP: -1 TOS:  -1 Stack: [4, 5, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:   99 PUSH       PC:   8 DA:   4 SP:  0 TOS:   4 Stack: [4, 5, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  102 LOAD       PC:   9 DA:   4 SP:  0 TOS:   5 Stack: [5, 5, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  105 PUSH       PC:  10 DA:   4 SP:  1 TOS:  4000000 Stack: [5, 4000000, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  107 DIV        PC:  11 DA:   4 SP:  0 TOS:   0 Stack: [0, 4000000, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  109 JZ         PC:  13 DA:   4 SP:  0 TOS:   0 Stack: [0, 4000000, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  111 DROP       PC:  14 DA:   4 SP: -1 TOS:  -1 Stack: [0, 4000000, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  114 PUSH       PC:  15 DA:   4 SP:  0 TOS:   4 Stack: [4, 4000000, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  117 LOAD       PC:  16 DA:   4 SP:  0 TOS:   5 Stack: [5, 4000000, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  120 PUSH       PC:  17 DA:   4 SP:  1 TOS:   2 Stack: [5, 2, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  122 MOD        PC:  18 DA:   4 SP:  0 TOS:   1 Stack: [1, 2, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  124 JZ         PC:  19 DA:   4 SP:  0 TOS:   1 Stack: [1, 2, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  126 DROP       PC:  20 DA:   4 SP: -1 TOS:  -1 Stack: [1, 2, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  129 PUSH       PC:  21 DA:   4 SP:  0 TOS:   2 Stack: [2, 2, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  132 PUSH       PC:  22 DA:   4 SP:  1 TOS:   3 Stack: [2, 3, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  135 LOAD       PC:  23 DA:   3 SP:  1 TOS:   3 Stack: [2, 3, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  138 POP        PC:  24 DA:   2 SP: -1 TOS:  -1 Stack: [2, 3, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  141 PUSH       PC:  25 DA:   2 SP:  0 TOS:   3 Stack: [3, 3, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  144 PUSH       PC:  26 DA:   2 SP:  1 TOS:   4 Stack: [3, 4, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  147 LOAD       PC:  27 DA:   4 SP:  1 TOS:   5 Stack: [3, 5, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  150 POP        PC:  28 DA:   3 SP: -1 TOS:  -1 Stack: [3, 5, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  152 JUMP       PC:   0 DA:   3 SP: -1 TOS:  -1 Stack: [3, 5, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  155 PUSH       PC:   1 DA:   3 SP:  0 TOS:   4 Stack: [4, 5, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  158 PUSH       PC:   2 DA:   3 SP:  1 TOS:   2 Stack: [4, 2, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  161 LOAD       PC:   3 DA:   2 SP:  1 TOS:   3 Stack: [4, 3, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  164 PUSH       PC:   4 DA:   2 SP:  2 TOS:   3 Stack: [4, 3, 3, -1, -1]
+  DEBUG    root:start.py:26 TICK:  167 LOAD       PC:   5 DA:   3 SP:  2 TOS:   5 Stack: [4, 3, 5, -1, -1]
+  DEBUG    root:start.py:26 TICK:  169 ADD        PC:   6 DA:   3 SP:  1 TOS:   8 Stack: [4, 8, 5, -1, -1]
+  DEBUG    root:start.py:26 TICK:  172 POP        PC:   7 DA:   4 SP: -1 TOS:  -1 Stack: [4, 8, 5, -1, -1]
+  DEBUG    root:start.py:26 TICK:  175 PUSH       PC:   8 DA:   4 SP:  0 TOS:   4 Stack: [4, 8, 5, -1, -1]
+  DEBUG    root:start.py:26 TICK:  178 LOAD       PC:   9 DA:   4 SP:  0 TOS:   8 Stack: [8, 8, 5, -1, -1]
+  DEBUG    root:start.py:26 TICK:  181 PUSH       PC:  10 DA:   4 SP:  1 TOS:  4000000 Stack: [8, 4000000, 5, -1, -1]
+  DEBUG    root:start.py:26 TICK:  183 DIV        PC:  11 DA:   4 SP:  0 TOS:   0 Stack: [0, 4000000, 5, -1, -1]
+  DEBUG    root:start.py:26 TICK:  185 JZ         PC:  13 DA:   4 SP:  0 TOS:   0 Stack: [0, 4000000, 5, -1, -1]
+  DEBUG    root:start.py:26 TICK:  187 DROP       PC:  14 DA:   4 SP: -1 TOS:  -1 Stack: [0, 4000000, 5, -1, -1]
+  DEBUG    root:start.py:26 TICK:  190 PUSH       PC:  15 DA:   4 SP:  0 TOS:   4 Stack: [4, 4000000, 5, -1, -1]
+  DEBUG    root:start.py:26 TICK:  193 LOAD       PC:  16 DA:   4 SP:  0 TOS:   8 Stack: [8, 4000000, 5, -1, -1]
+  DEBUG    root:start.py:26 TICK:  196 PUSH       PC:  17 DA:   4 SP:  1 TOS:   2 Stack: [8, 2, 5, -1, -1]
+  DEBUG    root:start.py:26 TICK:  198 MOD        PC:  18 DA:   4 SP:  0 TOS:   0 Stack: [0, 2, 5, -1, -1]
+  WARNING  root:start.py:28 Debug limit exceeded!
+  DEBUG    root:datapath.py:125 output: 4613730 << 4613730
+  WARNING  root:start.py:33 Halt ere my magnificence, mortal, lest thou be consumed by the brilliance of my splendor
+  INFO     root:start.py:43 output_buffer: 4613730
+  INFO     root:start.py:75 End simulation
+out_stdout: |
+  LoC: 60 Code instr: 49
+  ============================================================
+  4613730
+  Instructions: 938 Ticks: 2549
+out_code: |-
+  [6,
+   0,
+   0,
+   1,
+   2,
+   0,
+   0,
+   {"index": 0, "opcode": "psh", "arg": 4},
+   {"index": 1, "opcode": "psh", "arg": 2},
+   {"index": 2, "opcode": "get", "arg": null},
+   {"index": 3, "opcode": "psh", "arg": 3},
+   {"index": 4, "opcode": "get", "arg": null},
+   {"index": 5, "opcode": "add", "arg": null},
+   {"index": 6, "opcode": "pop", "arg": null},
+   {"index": 7, "opcode": "psh", "arg": 4},
+   {"index": 8, "opcode": "get", "arg": null},
+   {"index": 9, "opcode": "psh", "arg": 4000000},
+   {"index": 10, "opcode": "div", "arg": null},
+   {"index": 11, "opcode": "jmz", "arg": 13},
+   {"index": 12, "opcode": "jmp", "arg": 37},
+   {"index": 13, "opcode": "drp", "arg": null},
+   {"index": 14, "opcode": "psh", "arg": 4},
+   {"index": 15, "opcode": "get", "arg": null},
+   {"index": 16, "opcode": "psh", "arg": 2},
+   {"index": 17, "opcode": "mod", "arg": null},
+   {"index": 18, "opcode": "jmz", "arg": 29},
+   {"index": 19, "opcode": "drp", "arg": null},
+   {"index": 20, "opcode": "psh", "arg": 2},
+   {"index": 21, "opcode": "psh", "arg": 3},
+   {"index": 22, "opcode": "get", "arg": null},
+   {"index": 23, "opcode": "pop", "arg": null},
+   {"index": 24, "opcode": "psh", "arg": 3},
+   {"index": 25, "opcode": "psh", "arg": 4},
+   {"index": 26, "opcode": "get", "arg": null},
+   {"index": 27, "opcode": "pop", "arg": null},
+   {"index": 28, "opcode": "jmp", "arg": 0},
+   {"index": 29, "opcode": "psh", "arg": 5},
+   {"index": 30, "opcode": "dup", "arg": null},
+   {"index": 31, "opcode": "get", "arg": null},
+   {"index": 32, "opcode": "psh", "arg": 4},
+   {"index": 33, "opcode": "get", "arg": null},
+   {"index": 34, "opcode": "add", "arg": null},
+   {"index": 35, "opcode": "pop", "arg": null},
+   {"index": 36, "opcode": "jmp", "arg": 19},
+   {"index": 37, "opcode": "psh", "arg": 5},
+   {"index": 38, "opcode": "get", "arg": null},
+   {"index": 39, "opcode": "psh2", "arg": 1},
+   {"index": 40, "opcode": "pop", "arg": null},
+   {"index": 41, "opcode": "hlt", "arg": null}]

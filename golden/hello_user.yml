@@ -1,0 +1,244 @@
+in_source: |-
+  section .data:
+      str hello "Hello, "
+      buf name 50
+
+  section .code:
+
+  start:
+      psh hello
+
+  print_hello:
+      dup
+      get
+      jmz before_read
+      out
+      inc
+      jmp print_hello
+
+  before_read:
+      drp
+      drp
+      psh name
+
+  read_name:
+      dup
+      inp
+      jmz after_read
+      pop
+      inc
+      jmp read_name
+
+  after_read:
+      drp
+      drp
+      psh name
+
+  print_name:
+      dup
+      get
+      jmz stop
+      out
+      inc
+      jmp print_name
+
+  stop:
+      drp
+      drp
+      hlt
+
+in_stdin: |-
+  Ilya
+out_log: |
+  INFO     root:start.py:66 Start simulation
+  DEBUG    root:start.py:26 TICK:    3 PUSH       PC:   1 DA:   0 SP:  0 TOS:   2 Stack: [2, -1, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:    6 DUP        PC:   2 DA:   0 SP:  1 TOS:   2 Stack: [2, 2, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:    9 LOAD       PC:   3 DA:   2 SP:  1 TOS:  72 Stack: [2, 72, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   11 JZ         PC:   4 DA:   2 SP:  1 TOS:  72 Stack: [2, 72, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   15 PUSH2      PC:   5 DA:   2 SP:  2 TOS:  72 Stack: [2, 1, 72, -1, -1]
+  DEBUG    root:datapath.py:125 output: H << 72
+  DEBUG    root:start.py:26 TICK:   18 POP        PC:   6 DA:   1 SP:  0 TOS:   2 Stack: [2, 1, 72, -1, -1]
+  DEBUG    root:start.py:26 TICK:   20 INC        PC:   7 DA:   1 SP:  0 TOS:   3 Stack: [3, 1, 72, -1, -1]
+  DEBUG    root:start.py:26 TICK:   22 JUMP       PC:   1 DA:   1 SP:  0 TOS:   3 Stack: [3, 1, 72, -1, -1]
+  DEBUG    root:start.py:26 TICK:   25 DUP        PC:   2 DA:   1 SP:  1 TOS:   3 Stack: [3, 3, 72, -1, -1]
+  DEBUG    root:start.py:26 TICK:   28 LOAD       PC:   3 DA:   3 SP:  1 TOS:  101 Stack: [3, 101, 72, -1, -1]
+  DEBUG    root:start.py:26 TICK:   30 JZ         PC:   4 DA:   3 SP:  1 TOS:  101 Stack: [3, 101, 72, -1, -1]
+  DEBUG    root:start.py:26 TICK:   34 PUSH2      PC:   5 DA:   3 SP:  2 TOS:  101 Stack: [3, 1, 101, -1, -1]
+  DEBUG    root:datapath.py:125 output: He << 101
+  DEBUG    root:start.py:26 TICK:   37 POP        PC:   6 DA:   1 SP:  0 TOS:   3 Stack: [3, 1, 101, -1, -1]
+  DEBUG    root:start.py:26 TICK:   39 INC        PC:   7 DA:   1 SP:  0 TOS:   4 Stack: [4, 1, 101, -1, -1]
+  DEBUG    root:start.py:26 TICK:   41 JUMP       PC:   1 DA:   1 SP:  0 TOS:   4 Stack: [4, 1, 101, -1, -1]
+  DEBUG    root:start.py:26 TICK:   44 DUP        PC:   2 DA:   1 SP:  1 TOS:   4 Stack: [4, 4, 101, -1, -1]
+  DEBUG    root:start.py:26 TICK:   47 LOAD       PC:   3 DA:   4 SP:  1 TOS:  108 Stack: [4, 108, 101, -1, -1]
+  DEBUG    root:start.py:26 TICK:   49 JZ         PC:   4 DA:   4 SP:  1 TOS:  108 Stack: [4, 108, 101, -1, -1]
+  DEBUG    root:start.py:26 TICK:   53 PUSH2      PC:   5 DA:   4 SP:  2 TOS:  108 Stack: [4, 1, 108, -1, -1]
+  DEBUG    root:datapath.py:125 output: Hel << 108
+  DEBUG    root:start.py:26 TICK:   56 POP        PC:   6 DA:   1 SP:  0 TOS:   4 Stack: [4, 1, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:   58 INC        PC:   7 DA:   1 SP:  0 TOS:   5 Stack: [5, 1, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:   60 JUMP       PC:   1 DA:   1 SP:  0 TOS:   5 Stack: [5, 1, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:   63 DUP        PC:   2 DA:   1 SP:  1 TOS:   5 Stack: [5, 5, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:   66 LOAD       PC:   3 DA:   5 SP:  1 TOS:  108 Stack: [5, 108, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:   68 JZ         PC:   4 DA:   5 SP:  1 TOS:  108 Stack: [5, 108, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:   72 PUSH2      PC:   5 DA:   5 SP:  2 TOS:  108 Stack: [5, 1, 108, -1, -1]
+  DEBUG    root:datapath.py:125 output: Hell << 108
+  DEBUG    root:start.py:26 TICK:   75 POP        PC:   6 DA:   1 SP:  0 TOS:   5 Stack: [5, 1, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:   77 INC        PC:   7 DA:   1 SP:  0 TOS:   6 Stack: [6, 1, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:   79 JUMP       PC:   1 DA:   1 SP:  0 TOS:   6 Stack: [6, 1, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:   82 DUP        PC:   2 DA:   1 SP:  1 TOS:   6 Stack: [6, 6, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:   85 LOAD       PC:   3 DA:   6 SP:  1 TOS:  111 Stack: [6, 111, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:   87 JZ         PC:   4 DA:   6 SP:  1 TOS:  111 Stack: [6, 111, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:   91 PUSH2      PC:   5 DA:   6 SP:  2 TOS:  111 Stack: [6, 1, 111, -1, -1]
+  DEBUG    root:datapath.py:125 output: Hello << 111
+  DEBUG    root:start.py:26 TICK:   94 POP        PC:   6 DA:   1 SP:  0 TOS:   6 Stack: [6, 1, 111, -1, -1]
+  DEBUG    root:start.py:26 TICK:   96 INC        PC:   7 DA:   1 SP:  0 TOS:   7 Stack: [7, 1, 111, -1, -1]
+  DEBUG    root:start.py:26 TICK:   98 JUMP       PC:   1 DA:   1 SP:  0 TOS:   7 Stack: [7, 1, 111, -1, -1]
+  DEBUG    root:start.py:26 TICK:  101 DUP        PC:   2 DA:   1 SP:  1 TOS:   7 Stack: [7, 7, 111, -1, -1]
+  DEBUG    root:start.py:26 TICK:  104 LOAD       PC:   3 DA:   7 SP:  1 TOS:  44 Stack: [7, 44, 111, -1, -1]
+  DEBUG    root:start.py:26 TICK:  106 JZ         PC:   4 DA:   7 SP:  1 TOS:  44 Stack: [7, 44, 111, -1, -1]
+  DEBUG    root:start.py:26 TICK:  110 PUSH2      PC:   5 DA:   7 SP:  2 TOS:  44 Stack: [7, 1, 44, -1, -1]
+  DEBUG    root:datapath.py:125 output: Hello, << 44
+  DEBUG    root:start.py:26 TICK:  113 POP        PC:   6 DA:   1 SP:  0 TOS:   7 Stack: [7, 1, 44, -1, -1]
+  DEBUG    root:start.py:26 TICK:  115 INC        PC:   7 DA:   1 SP:  0 TOS:   8 Stack: [8, 1, 44, -1, -1]
+  DEBUG    root:start.py:26 TICK:  117 JUMP       PC:   1 DA:   1 SP:  0 TOS:   8 Stack: [8, 1, 44, -1, -1]
+  DEBUG    root:start.py:26 TICK:  120 DUP        PC:   2 DA:   1 SP:  1 TOS:   8 Stack: [8, 8, 44, -1, -1]
+  DEBUG    root:start.py:26 TICK:  123 LOAD       PC:   3 DA:   8 SP:  1 TOS:  32 Stack: [8, 32, 44, -1, -1]
+  DEBUG    root:start.py:26 TICK:  125 JZ         PC:   4 DA:   8 SP:  1 TOS:  32 Stack: [8, 32, 44, -1, -1]
+  DEBUG    root:start.py:26 TICK:  129 PUSH2      PC:   5 DA:   8 SP:  2 TOS:  32 Stack: [8, 1, 32, -1, -1]
+  DEBUG    root:datapath.py:125 output: Hello,  << 32
+  DEBUG    root:start.py:26 TICK:  132 POP        PC:   6 DA:   1 SP:  0 TOS:   8 Stack: [8, 1, 32, -1, -1]
+  DEBUG    root:start.py:26 TICK:  134 INC        PC:   7 DA:   1 SP:  0 TOS:   9 Stack: [9, 1, 32, -1, -1]
+  DEBUG    root:start.py:26 TICK:  136 JUMP       PC:   1 DA:   1 SP:  0 TOS:   9 Stack: [9, 1, 32, -1, -1]
+  DEBUG    root:start.py:26 TICK:  139 DUP        PC:   2 DA:   1 SP:  1 TOS:   9 Stack: [9, 9, 32, -1, -1]
+  DEBUG    root:start.py:26 TICK:  142 LOAD       PC:   3 DA:   9 SP:  1 TOS:   0 Stack: [9, 0, 32, -1, -1]
+  DEBUG    root:start.py:26 TICK:  144 JZ         PC:   8 DA:   9 SP:  1 TOS:   0 Stack: [9, 0, 32, -1, -1]
+  DEBUG    root:start.py:26 TICK:  146 DROP       PC:   9 DA:   9 SP:  0 TOS:   9 Stack: [9, 0, 32, -1, -1]
+  DEBUG    root:start.py:26 TICK:  148 DROP       PC:  10 DA:   9 SP: -1 TOS:  -1 Stack: [9, 0, 32, -1, -1]
+  DEBUG    root:start.py:26 TICK:  151 PUSH       PC:  11 DA:   9 SP:  0 TOS:  10 Stack: [10, 0, 32, -1, -1]
+  DEBUG    root:start.py:26 TICK:  154 DUP        PC:  12 DA:   9 SP:  1 TOS:  10 Stack: [10, 10, 32, -1, -1]
+  DEBUG    root:start.py:26 TICK:  157 PUSH       PC:  13 DA:   9 SP:  2 TOS:   0 Stack: [10, 10, 0, -1, -1]
+  DEBUG    root:datapath.py:117 input: I
+  DEBUG    root:start.py:26 TICK:  160 LOAD       PC:  14 DA:   0 SP:  2 TOS:  73 Stack: [10, 10, 73, -1, -1]
+  DEBUG    root:start.py:26 TICK:  162 JZ         PC:  15 DA:   0 SP:  2 TOS:  73 Stack: [10, 10, 73, -1, -1]
+  DEBUG    root:start.py:26 TICK:  165 POP        PC:  16 DA:  10 SP:  0 TOS:  10 Stack: [10, 10, 73, -1, -1]
+  DEBUG    root:start.py:26 TICK:  167 INC        PC:  17 DA:  10 SP:  0 TOS:  11 Stack: [11, 10, 73, -1, -1]
+  DEBUG    root:start.py:26 TICK:  169 JUMP       PC:  11 DA:  10 SP:  0 TOS:  11 Stack: [11, 10, 73, -1, -1]
+  DEBUG    root:start.py:26 TICK:  172 DUP        PC:  12 DA:  10 SP:  1 TOS:  11 Stack: [11, 11, 73, -1, -1]
+  DEBUG    root:start.py:26 TICK:  175 PUSH       PC:  13 DA:  10 SP:  2 TOS:   0 Stack: [11, 11, 0, -1, -1]
+  DEBUG    root:datapath.py:117 input: l
+  DEBUG    root:start.py:26 TICK:  178 LOAD       PC:  14 DA:   0 SP:  2 TOS:  108 Stack: [11, 11, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:  180 JZ         PC:  15 DA:   0 SP:  2 TOS:  108 Stack: [11, 11, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:  183 POP        PC:  16 DA:  11 SP:  0 TOS:  11 Stack: [11, 11, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:  185 INC        PC:  17 DA:  11 SP:  0 TOS:  12 Stack: [12, 11, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:  187 JUMP       PC:  11 DA:  11 SP:  0 TOS:  12 Stack: [12, 11, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:  190 DUP        PC:  12 DA:  11 SP:  1 TOS:  12 Stack: [12, 12, 108, -1, -1]
+  DEBUG    root:start.py:26 TICK:  193 PUSH       PC:  13 DA:  11 SP:  2 TOS:   0 Stack: [12, 12, 0, -1, -1]
+  DEBUG    root:datapath.py:117 input: y
+  DEBUG    root:start.py:26 TICK:  196 LOAD       PC:  14 DA:   0 SP:  2 TOS:  121 Stack: [12, 12, 121, -1, -1]
+  DEBUG    root:start.py:26 TICK:  198 JZ         PC:  15 DA:   0 SP:  2 TOS:  121 Stack: [12, 12, 121, -1, -1]
+  DEBUG    root:datapath.py:117 input: a
+  DEBUG    root:datapath.py:117 input: 
+  DEBUG    root:datapath.py:125 output: Hello, I << 73
+  DEBUG    root:datapath.py:125 output: Hello, Il << 108
+  DEBUG    root:datapath.py:125 output: Hello, Ily << 121
+  DEBUG    root:datapath.py:125 output: Hello, Ilya << 97
+  WARNING  root:start.py:33 Halt ere my magnificence, mortal, lest thou be consumed by the brilliance of my splendor
+  INFO     root:start.py:43 output_buffer: Hello, Ilya
+  INFO     root:start.py:75 End simulation
+out_stdout: |
+  LoC: 47 Code instr: 92
+  ============================================================
+  Hello, Ilya
+  Instructions: 125 Ticks: 330
+out_code: |-
+  [60,
+   0,
+   0,
+   72,
+   101,
+   108,
+   108,
+   111,
+   44,
+   32,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   {"index": 0, "opcode": "psh", "arg": 2},
+   {"index": 1, "opcode": "dup", "arg": null},
+   {"index": 2, "opcode": "get", "arg": null},
+   {"index": 3, "opcode": "jmz", "arg": 8},
+   {"index": 4, "opcode": "psh2", "arg": 1},
+   {"index": 5, "opcode": "pop", "arg": null},
+   {"index": 6, "opcode": "inc", "arg": null},
+   {"index": 7, "opcode": "jmp", "arg": 1},
+   {"index": 8, "opcode": "drp", "arg": null},
+   {"index": 9, "opcode": "drp", "arg": null},
+   {"index": 10, "opcode": "psh", "arg": 10},
+   {"index": 11, "opcode": "dup", "arg": null},
+   {"index": 12, "opcode": "psh", "arg": 0},
+   {"index": 13, "opcode": "get", "arg": null},
+   {"index": 14, "opcode": "jmz", "arg": 18},
+   {"index": 15, "opcode": "pop", "arg": null},
+   {"index": 16, "opcode": "inc", "arg": null},
+   {"index": 17, "opcode": "jmp", "arg": 11},
+   {"index": 18, "opcode": "drp", "arg": null},
+   {"index": 19, "opcode": "drp", "arg": null},
+   {"index": 20, "opcode": "psh", "arg": 10},
+   {"index": 21, "opcode": "dup", "arg": null},
+   {"index": 22, "opcode": "get", "arg": null},
+   {"index": 23, "opcode": "jmz", "arg": 28},
+   {"index": 24, "opcode": "psh2", "arg": 1},
+   {"index": 25, "opcode": "pop", "arg": null},
+   {"index": 26, "opcode": "inc", "arg": null},
+   {"index": 27, "opcode": "jmp", "arg": 21},
+   {"index": 28, "opcode": "drp", "arg": null},
+   {"index": 29, "opcode": "drp", "arg": null},
+   {"index": 30, "opcode": "hlt", "arg": null}]

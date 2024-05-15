@@ -1,0 +1,164 @@
+in_source: |-
+  section .code:
+
+  read:
+      inp
+      jmz stop
+      out
+      jmp read
+
+  stop:
+      drp
+      hlt
+
+in_stdin: |-
+  Some random text to output!!
+out_log: |
+  INFO     root:start.py:66 Start simulation
+  DEBUG    root:start.py:26 TICK:    3 PUSH       PC:   1 DA:   0 SP:  0 TOS:   0 Stack: [0, -1, -1, -1, -1]
+  DEBUG    root:datapath.py:117 input: S
+  DEBUG    root:start.py:26 TICK:    6 LOAD       PC:   2 DA:   0 SP:  0 TOS:  83 Stack: [83, -1, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:    8 JZ         PC:   3 DA:   0 SP:  0 TOS:  83 Stack: [83, -1, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   12 PUSH2      PC:   4 DA:   0 SP:  1 TOS:  83 Stack: [1, 83, -1, -1, -1]
+  DEBUG    root:datapath.py:125 output: S << 83
+  DEBUG    root:start.py:26 TICK:   15 POP        PC:   5 DA:   1 SP: -1 TOS:  -1 Stack: [1, 83, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   17 JUMP       PC:   0 DA:   1 SP: -1 TOS:  -1 Stack: [1, 83, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   20 PUSH       PC:   1 DA:   1 SP:  0 TOS:   0 Stack: [0, 83, -1, -1, -1]
+  DEBUG    root:datapath.py:117 input: o
+  DEBUG    root:start.py:26 TICK:   23 LOAD       PC:   2 DA:   0 SP:  0 TOS:  111 Stack: [111, 83, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   25 JZ         PC:   3 DA:   0 SP:  0 TOS:  111 Stack: [111, 83, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   29 PUSH2      PC:   4 DA:   0 SP:  1 TOS:  111 Stack: [1, 111, -1, -1, -1]
+  DEBUG    root:datapath.py:125 output: So << 111
+  DEBUG    root:start.py:26 TICK:   32 POP        PC:   5 DA:   1 SP: -1 TOS:  -1 Stack: [1, 111, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   34 JUMP       PC:   0 DA:   1 SP: -1 TOS:  -1 Stack: [1, 111, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   37 PUSH       PC:   1 DA:   1 SP:  0 TOS:   0 Stack: [0, 111, -1, -1, -1]
+  DEBUG    root:datapath.py:117 input: m
+  DEBUG    root:start.py:26 TICK:   40 LOAD       PC:   2 DA:   0 SP:  0 TOS:  109 Stack: [109, 111, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   42 JZ         PC:   3 DA:   0 SP:  0 TOS:  109 Stack: [109, 111, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   46 PUSH2      PC:   4 DA:   0 SP:  1 TOS:  109 Stack: [1, 109, -1, -1, -1]
+  DEBUG    root:datapath.py:125 output: Som << 109
+  DEBUG    root:start.py:26 TICK:   49 POP        PC:   5 DA:   1 SP: -1 TOS:  -1 Stack: [1, 109, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   51 JUMP       PC:   0 DA:   1 SP: -1 TOS:  -1 Stack: [1, 109, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   54 PUSH       PC:   1 DA:   1 SP:  0 TOS:   0 Stack: [0, 109, -1, -1, -1]
+  DEBUG    root:datapath.py:117 input: e
+  DEBUG    root:start.py:26 TICK:   57 LOAD       PC:   2 DA:   0 SP:  0 TOS:  101 Stack: [101, 109, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   59 JZ         PC:   3 DA:   0 SP:  0 TOS:  101 Stack: [101, 109, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   63 PUSH2      PC:   4 DA:   0 SP:  1 TOS:  101 Stack: [1, 101, -1, -1, -1]
+  DEBUG    root:datapath.py:125 output: Some << 101
+  DEBUG    root:start.py:26 TICK:   66 POP        PC:   5 DA:   1 SP: -1 TOS:  -1 Stack: [1, 101, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   68 JUMP       PC:   0 DA:   1 SP: -1 TOS:  -1 Stack: [1, 101, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   71 PUSH       PC:   1 DA:   1 SP:  0 TOS:   0 Stack: [0, 101, -1, -1, -1]
+  DEBUG    root:datapath.py:117 input:  
+  DEBUG    root:start.py:26 TICK:   74 LOAD       PC:   2 DA:   0 SP:  0 TOS:  32 Stack: [32, 101, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   76 JZ         PC:   3 DA:   0 SP:  0 TOS:  32 Stack: [32, 101, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   80 PUSH2      PC:   4 DA:   0 SP:  1 TOS:  32 Stack: [1, 32, -1, -1, -1]
+  DEBUG    root:datapath.py:125 output: Some  << 32
+  DEBUG    root:start.py:26 TICK:   83 POP        PC:   5 DA:   1 SP: -1 TOS:  -1 Stack: [1, 32, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   85 JUMP       PC:   0 DA:   1 SP: -1 TOS:  -1 Stack: [1, 32, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   88 PUSH       PC:   1 DA:   1 SP:  0 TOS:   0 Stack: [0, 32, -1, -1, -1]
+  DEBUG    root:datapath.py:117 input: r
+  DEBUG    root:start.py:26 TICK:   91 LOAD       PC:   2 DA:   0 SP:  0 TOS:  114 Stack: [114, 32, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   93 JZ         PC:   3 DA:   0 SP:  0 TOS:  114 Stack: [114, 32, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:   97 PUSH2      PC:   4 DA:   0 SP:  1 TOS:  114 Stack: [1, 114, -1, -1, -1]
+  DEBUG    root:datapath.py:125 output: Some r << 114
+  DEBUG    root:start.py:26 TICK:  100 POP        PC:   5 DA:   1 SP: -1 TOS:  -1 Stack: [1, 114, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  102 JUMP       PC:   0 DA:   1 SP: -1 TOS:  -1 Stack: [1, 114, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  105 PUSH       PC:   1 DA:   1 SP:  0 TOS:   0 Stack: [0, 114, -1, -1, -1]
+  DEBUG    root:datapath.py:117 input: a
+  DEBUG    root:start.py:26 TICK:  108 LOAD       PC:   2 DA:   0 SP:  0 TOS:  97 Stack: [97, 114, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  110 JZ         PC:   3 DA:   0 SP:  0 TOS:  97 Stack: [97, 114, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  114 PUSH2      PC:   4 DA:   0 SP:  1 TOS:  97 Stack: [1, 97, -1, -1, -1]
+  DEBUG    root:datapath.py:125 output: Some ra << 97
+  DEBUG    root:start.py:26 TICK:  117 POP        PC:   5 DA:   1 SP: -1 TOS:  -1 Stack: [1, 97, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  119 JUMP       PC:   0 DA:   1 SP: -1 TOS:  -1 Stack: [1, 97, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  122 PUSH       PC:   1 DA:   1 SP:  0 TOS:   0 Stack: [0, 97, -1, -1, -1]
+  DEBUG    root:datapath.py:117 input: n
+  DEBUG    root:start.py:26 TICK:  125 LOAD       PC:   2 DA:   0 SP:  0 TOS:  110 Stack: [110, 97, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  127 JZ         PC:   3 DA:   0 SP:  0 TOS:  110 Stack: [110, 97, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  131 PUSH2      PC:   4 DA:   0 SP:  1 TOS:  110 Stack: [1, 110, -1, -1, -1]
+  DEBUG    root:datapath.py:125 output: Some ran << 110
+  DEBUG    root:start.py:26 TICK:  134 POP        PC:   5 DA:   1 SP: -1 TOS:  -1 Stack: [1, 110, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  136 JUMP       PC:   0 DA:   1 SP: -1 TOS:  -1 Stack: [1, 110, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  139 PUSH       PC:   1 DA:   1 SP:  0 TOS:   0 Stack: [0, 110, -1, -1, -1]
+  DEBUG    root:datapath.py:117 input: d
+  DEBUG    root:start.py:26 TICK:  142 LOAD       PC:   2 DA:   0 SP:  0 TOS:  100 Stack: [100, 110, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  144 JZ         PC:   3 DA:   0 SP:  0 TOS:  100 Stack: [100, 110, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  148 PUSH2      PC:   4 DA:   0 SP:  1 TOS:  100 Stack: [1, 100, -1, -1, -1]
+  DEBUG    root:datapath.py:125 output: Some rand << 100
+  DEBUG    root:start.py:26 TICK:  151 POP        PC:   5 DA:   1 SP: -1 TOS:  -1 Stack: [1, 100, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  153 JUMP       PC:   0 DA:   1 SP: -1 TOS:  -1 Stack: [1, 100, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  156 PUSH       PC:   1 DA:   1 SP:  0 TOS:   0 Stack: [0, 100, -1, -1, -1]
+  DEBUG    root:datapath.py:117 input: o
+  DEBUG    root:start.py:26 TICK:  159 LOAD       PC:   2 DA:   0 SP:  0 TOS:  111 Stack: [111, 100, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  161 JZ         PC:   3 DA:   0 SP:  0 TOS:  111 Stack: [111, 100, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  165 PUSH2      PC:   4 DA:   0 SP:  1 TOS:  111 Stack: [1, 111, -1, -1, -1]
+  DEBUG    root:datapath.py:125 output: Some rando << 111
+  DEBUG    root:start.py:26 TICK:  168 POP        PC:   5 DA:   1 SP: -1 TOS:  -1 Stack: [1, 111, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  170 JUMP       PC:   0 DA:   1 SP: -1 TOS:  -1 Stack: [1, 111, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  173 PUSH       PC:   1 DA:   1 SP:  0 TOS:   0 Stack: [0, 111, -1, -1, -1]
+  DEBUG    root:datapath.py:117 input: m
+  DEBUG    root:start.py:26 TICK:  176 LOAD       PC:   2 DA:   0 SP:  0 TOS:  109 Stack: [109, 111, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  178 JZ         PC:   3 DA:   0 SP:  0 TOS:  109 Stack: [109, 111, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  182 PUSH2      PC:   4 DA:   0 SP:  1 TOS:  109 Stack: [1, 109, -1, -1, -1]
+  DEBUG    root:datapath.py:125 output: Some random << 109
+  DEBUG    root:start.py:26 TICK:  185 POP        PC:   5 DA:   1 SP: -1 TOS:  -1 Stack: [1, 109, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  187 JUMP       PC:   0 DA:   1 SP: -1 TOS:  -1 Stack: [1, 109, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  190 PUSH       PC:   1 DA:   1 SP:  0 TOS:   0 Stack: [0, 109, -1, -1, -1]
+  DEBUG    root:datapath.py:117 input:  
+  DEBUG    root:start.py:26 TICK:  193 LOAD       PC:   2 DA:   0 SP:  0 TOS:  32 Stack: [32, 109, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  195 JZ         PC:   3 DA:   0 SP:  0 TOS:  32 Stack: [32, 109, -1, -1, -1]
+  DEBUG    root:start.py:26 TICK:  199 PUSH2      PC:   4 DA:   0 SP:  1 TOS:  32 Stack: [1, 32, -1, -1, -1]
+  DEBUG    root:datapath.py:125 output: Some random  << 32
+  DEBUG    root:datapath.py:117 input: t
+  DEBUG    root:datapath.py:125 output: Some random t << 116
+  DEBUG    root:datapath.py:117 input: e
+  DEBUG    root:datapath.py:125 output: Some random te << 101
+  DEBUG    root:datapath.py:117 input: x
+  DEBUG    root:datapath.py:125 output: Some random tex << 120
+  DEBUG    root:datapath.py:117 input: t
+  DEBUG    root:datapath.py:125 output: Some random text << 116
+  DEBUG    root:datapath.py:117 input:  
+  DEBUG    root:datapath.py:125 output: Some random text  << 32
+  DEBUG    root:datapath.py:117 input: t
+  DEBUG    root:datapath.py:125 output: Some random text t << 116
+  DEBUG    root:datapath.py:117 input: o
+  DEBUG    root:datapath.py:125 output: Some random text to << 111
+  DEBUG    root:datapath.py:117 input:  
+  DEBUG    root:datapath.py:125 output: Some random text to  << 32
+  DEBUG    root:datapath.py:117 input: o
+  DEBUG    root:datapath.py:125 output: Some random text to o << 111
+  DEBUG    root:datapath.py:117 input: u
+  DEBUG    root:datapath.py:125 output: Some random text to ou << 117
+  DEBUG    root:datapath.py:117 input: t
+  DEBUG    root:datapath.py:125 output: Some random text to out << 116
+  DEBUG    root:datapath.py:117 input: p
+  DEBUG    root:datapath.py:125 output: Some random text to outp << 112
+  DEBUG    root:datapath.py:117 input: u
+  DEBUG    root:datapath.py:125 output: Some random text to outpu << 117
+  DEBUG    root:datapath.py:117 input: t
+  DEBUG    root:datapath.py:125 output: Some random text to output << 116
+  DEBUG    root:datapath.py:117 input: !
+  DEBUG    root:datapath.py:125 output: Some random text to output! << 33
+  DEBUG    root:datapath.py:117 input: !
+  DEBUG    root:datapath.py:125 output: Some random text to output!! << 33
+  DEBUG    root:datapath.py:117 input: 
+  WARNING  root:start.py:33 Halt ere my magnificence, mortal, lest thou be consumed by the brilliance of my splendor
+  INFO     root:start.py:43 output_buffer: Some random text to output!!
+  INFO     root:start.py:75 End simulation
+out_stdout: |
+  LoC: 11 Code instr: 11
+  ============================================================
+  Some random text to output!!
+  Instructions: 173 Ticks: 487
+out_code: |-
+  [2,
+   0,
+   0,
+   {"index": 0, "opcode": "psh", "arg": 0},
+   {"index": 1, "opcode": "get", "arg": null},
+   {"index": 2, "opcode": "jmz", "arg": 6},
+   {"index": 3, "opcode": "psh2", "arg": 1},
+   {"index": 4, "opcode": "pop", "arg": null},
+   {"index": 5, "opcode": "jmp", "arg": 0},
+   {"index": 6, "opcode": "drp", "arg": null},
+   {"index": 7, "opcode": "hlt", "arg": null}]
