@@ -90,13 +90,37 @@ def translate_stage_1(text: str):
                 labels[label] = program_counter
             else:
                 if token == "inp":
-                    tokens.append({"index": program_counter, "opcode": Opcode.PUSH.value, "arg": INPUT_PORT})
-                    tokens.append({"index": program_counter + 1, "opcode": Opcode.LOAD.value, "arg": None})
+                    tokens.append(
+                        {
+                            "index": program_counter,
+                            "opcode": Opcode.PUSH.value,
+                            "arg": INPUT_PORT,
+                        }
+                    )
+                    tokens.append(
+                        {
+                            "index": program_counter + 1,
+                            "opcode": Opcode.LOAD.value,
+                            "arg": None,
+                        }
+                    )
                     program_counter += 2
                     continue
                 elif token == "out":
-                    tokens.append({"index": program_counter, "opcode": Opcode.PUSH2.value, "arg": OUTPUT_PORT})
-                    tokens.append({"index": program_counter + 1, "opcode": Opcode.POP.value, "arg": None})
+                    tokens.append(
+                        {
+                            "index": program_counter,
+                            "opcode": Opcode.PUSH2.value,
+                            "arg": OUTPUT_PORT,
+                        }
+                    )
+                    tokens.append(
+                        {
+                            "index": program_counter + 1,
+                            "opcode": Opcode.POP.value,
+                            "arg": None,
+                        }
+                    )
                     program_counter += 2
                     continue
 
